@@ -8,8 +8,8 @@ import { addTodo } from "../../actions/actions";
 
 const TodoCreator = () => {
   const [todoCount, setTodoCount] = useState(0);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState("Title");
+  const [description, setDescription] = useState("There was nobody execpet for her and her dog");
 
   const dispatch = useDispatch();
 

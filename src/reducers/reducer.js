@@ -6,24 +6,27 @@ const reducer = (todoContainer = [], action) => {
       return [...todoContainer, action.payload];
 
     case actionTypes.DELETE_TODO:
-      const todoContainerCopy = [...todoContainer];
-
       // This variable stores the index of the todo that will be deleted
       let todoIndex;
 
-      // Looking for the todo's index
-      for (const index in todoContainerCopy) {
-        if (todoContainerCopy.hasOwnProperty(index)) {
-          const todo = todoContainerCopy[index];
-
+      // Looking for the todo and taking its index
+      for (const index in todoContainer) {
+        if (todoContainer.hasOwnProperty(index)) {
+          const todo = todoContainer[index];
           if (todo.id === action.payload.id) todoIndex = index;
         }
       }
 
-      // Deleting the todo by its index
-      if (todoIndex) delete todoContainerCopy[todoIndex];
+      // Get out if there is no item with such an index
+      if (todoIndex == null && todoIndex <= -1) return todoContainer;
 
-      // Returning modified `todoContainer`
+      // Creating a copy of the `todoContainer`
+      let todoContainerCopy = [...todoContainer];
+
+      // Deleting that specific todo
+      todoContainerCopy.splice(todoIndex, 1);
+
+      // Returning a new version of the `todoContainer`
       return todoContainerCopy;
 
     default:

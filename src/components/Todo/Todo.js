@@ -3,10 +3,17 @@ import "./Todo.css";
 
 import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from "react-icons/io";
 
+import { useDispatch } from "react-redux";
+import { deleteTodo } from "../../actions/actions";
+
 const Todo = ({ id, title, description }) => {
   const [isCompleted, setIsCompleted] = useState(false);
 
-  const deleteMe = () => {};
+  const dispatch = useDispatch();
+
+  const deleteMe = () => {
+    dispatch(deleteTodo(id));
+  };
 
   return (
     <div className="todo">
