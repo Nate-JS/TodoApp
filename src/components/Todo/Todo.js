@@ -3,8 +3,10 @@ import "./Todo.css";
 
 import { IoMdCheckmarkCircleOutline, IoMdCloseCircleOutline } from "react-icons/io";
 
-const Todo = ({ id, title, description, deleteMe }) => {
+const Todo = ({ id, title, description }) => {
   const [isCompleted, setIsCompleted] = useState(false);
+
+  const deleteMe = () => {};
 
   return (
     <div className="todo">
@@ -18,7 +20,7 @@ const Todo = ({ id, title, description, deleteMe }) => {
         </button>
 
         <button className="todo__btn">
-          <IoMdCloseCircleOutline onClick={() => deleteMe(id)} />
+          <IoMdCloseCircleOutline onClick={() => deleteMe()} />
         </button>
       </div>
     </div>
