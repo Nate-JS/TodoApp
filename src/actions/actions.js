@@ -1,6 +1,6 @@
 import * as actionTypes from "./actionTypes";
 
-const addTodo = (id, title, description, completed = false) => {
+export const addTodo = (id, title, description, completed = false) => {
   return {
     type: actionTypes.ADD_TODO,
     payload: {
@@ -12,7 +12,7 @@ const addTodo = (id, title, description, completed = false) => {
   };
 };
 
-const deleteTodo = id => {
+export const deleteTodo = id => {
   return {
     type: actionTypes.DELETE_TODO,
     payload: {
