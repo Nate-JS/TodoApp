@@ -8,8 +8,8 @@ import { addTodo } from "../../actions/actions";
 
 const TodoCreator = () => {
   const [todoCount, setTodoCount] = useState(0);
-  const [title, setTitle] = useState("Title");
-  const [description, setDescription] = useState("There was nobody execpet for her and her dog");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const dispatch = useDispatch();
 
@@ -21,15 +21,30 @@ const TodoCreator = () => {
     setTodoCount(todoCount + 1);
   };
 
+  const clearFields = () => {
+    setTitle("");
+    setDescription("");
+  };
+
   return (
     <div className="todoCreator">
       <label>Title</label>
-      <input className="todoCreator__title" type="text" onInput={event => setTitle(event.target.value)} />
+      <input className="todoCreator__title" type="text" onInput={event => setTitle(event.target.value)} value={title} />
 
       <label>Description</label>
-      <textarea className="todoCreator__description" onInput={event => setDescription(event.target.value)}></textarea>
+      <textarea
+        className="todoCreator__description"
+        onInput={event => setDescription(event.target.value)}
+        value={description}
+      ></textarea>
 
-      <button className="todoCreator__btn" onClick={dispactchTodo}>
+      <button
+        className="todoCreator__btn"
+        onClick={() => {
+          dispactchTodo();
+          clearFields();
+        }}
+      >
         <IoIosAddCircleOutline />
       </button>
     </div>
